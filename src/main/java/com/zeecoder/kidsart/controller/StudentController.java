@@ -15,7 +15,7 @@ public class StudentController {
   @GetMapping
   public List<Student> getAllStudents(){
     return List.of(
-          new Student(UUID.randomUUID(), "Jameson", "Bond", "jamesbons@gmail.com", Student.Gender.MALE),
+          new Student(UUID.randomUUID(), "James", "Bond", "jamesbons@gmail.com", Student.Gender.MALE),
           new Student(UUID.randomUUID(), "Elisa", "Tamara", "elisatamara@gmail.com", Gender.FEMALE)
         );
   }

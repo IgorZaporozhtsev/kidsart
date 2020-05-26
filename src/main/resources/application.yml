@@ -1,0 +1,11 @@
+server:
+  servlet:
+    context-path: /api
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kidsart
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres1
+    hikari:
+      maximum-pool-size: 30
