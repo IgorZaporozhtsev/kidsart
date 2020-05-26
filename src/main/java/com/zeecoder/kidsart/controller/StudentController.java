@@ -4,6 +4,9 @@ import com.zeecoder.kidsart.model.Student;
 import com.zeecoder.kidsart.model.Student.Gender;
 import java.util.List;
 import java.util.UUID;
+
+import com.zeecoder.kidsart.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,11 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("students")
 public class StudentController {
 
+    private StudentService studentService;
+
+    @Autowired
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+
   @GetMapping
   public List<Student> getAllStudents(){
-    return List.of(
-          new Student(UUID.randomUUID(), "James", "Bond", "jamesbons@gmail.com", Student.Gender.MALE),
-          new Student(UUID.randomUUID(), "Elisa", "Tamara", "elisatamara@gmail.com", Gender.FEMALE)
-        );
+    return studentService.getAllStudents();
   }
 }
