@@ -3,6 +3,7 @@ package com.zeecoder.kidsart.repository;
 import com.zeecoder.kidsart.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,10 +20,21 @@ public class StudentDAO {
     }
 
     public List<Student> selectAllStudents(){
-        String sql = "";
-        List<Student> students = jdbcTemplate.query(sql, (resultSet, i ) -> {
-            return null;
-        });
-            return null;
+        String sql = "SELECT student_id, first_name, last_name, email, gender FROM student";
+        return jdbcTemplate.query(sql, mapStudentFromDb());
+    }
+
+    private RowMapper<Student> mapStudentFromDb() {
+        return (resultSet, i ) -> {
+            String studentIDStr = resultSet.getString("student_id");
+            UUID studentId= UUID.fromString(studentIDStr);
+
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String email = resultSet.getString("email");
+            String genderStr = resultSet.getString("gender").toUpperCase();
+            Student.Gender gender = Student.Gender.valueOf(genderStr);
+            return new Student(studentId, firstName,lastName,email, gender);
+        };
     }
 }
