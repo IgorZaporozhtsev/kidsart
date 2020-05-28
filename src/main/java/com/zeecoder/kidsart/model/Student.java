@@ -1,5 +1,7 @@
 package com.zeecoder.kidsart.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 public class Student {
@@ -9,7 +11,11 @@ public class Student {
   private final String email;
   private final Gender gender;
 
-  public Student(UUID uuid, String firstName, String lastName, String email, Gender gender) {
+  public Student(@JsonProperty("student_id") UUID uuid,
+                 @JsonProperty("firstName") String firstName,
+                 @JsonProperty("lastName") String lastName,
+                 @JsonProperty("email") String email,
+                 @JsonProperty("gender") Gender gender) {
     this.uuid = uuid;
     this.firstName = firstName;
     this.lastName = lastName;
