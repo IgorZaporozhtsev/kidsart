@@ -1,5 +1,7 @@
 package com.zeecoder.kidsart.service;
 
+import com.zeecoder.kidsart.EmailValidator;
+import com.zeecoder.kidsart.exception.ApiRequestException;
 import com.zeecoder.kidsart.model.Student;
 import com.zeecoder.kidsart.repository.StudentDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +14,13 @@ import java.util.UUID;
 @Service
 public class StudentService {
 
-    private StudentDAO studentDAO;
+    private final StudentDAO studentDAO;
+    private final EmailValidator emailValidator;
 
     @Autowired
-    public StudentService(StudentDAO studentDAO) {
+    public StudentService(StudentDAO studentDAO, EmailValidator emailValidator) {
         this.studentDAO = studentDAO;
+        this.emailValidator = emailValidator;
     }
 
     public List<Student> getAllStudents(){
@@ -25,6 +29,11 @@ public class StudentService {
 
     public void addStudent(UUID student_id, Student student) {
         UUID uuid = Optional.ofNullable(student_id).orElse(UUID.randomUUID());
+
+        if (!emailValidator.test(student.getEmail())){
+           throw new ApiRequestException(student.getEmail() + " is not valid");
+        }
+
         studentDAO.addStudent(uuid, student);
     }
 }

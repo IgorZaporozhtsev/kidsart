@@ -1,14 +1,20 @@
 package com.zeecoder.kidsart.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class Student {
+
   private final UUID uuid;
+  @NotBlank
   private final String firstName;
+  @NotBlank
   private final String lastName;
+  @NotBlank
   private final String email;
+  @NotNull
   private final Gender gender;
 
   public Student(@JsonProperty("student_id") UUID uuid,

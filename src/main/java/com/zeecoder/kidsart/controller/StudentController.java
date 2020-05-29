@@ -9,6 +9,8 @@ import com.zeecoder.kidsart.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("students")
 public class StudentController {
@@ -27,7 +29,7 @@ public class StudentController {
   }
 
   @PostMapping
-  public void addNewUsers(@RequestBody Student student){
+  public void addNewUsers(@RequestBody @Valid Student student){
         studentService.addStudent(null, student);
   }
 }
