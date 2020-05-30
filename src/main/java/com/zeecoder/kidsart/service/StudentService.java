@@ -34,6 +34,10 @@ public class StudentService {
            throw new ApiRequestException(student.getEmail() + " is not valid");
         }
 
+        if (studentDAO.isEmailTaken(student.getEmail())){
+            throw new ApiRequestException(student.getEmail() + " already exist");
+        }
+
         studentDAO.addStudent(uuid, student);
     }
 }

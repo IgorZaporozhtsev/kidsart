@@ -37,8 +37,19 @@ public class StudentDAO {
         );
     }
 
+    public boolean isEmailTaken(String email){
+
+        String sql = "SELECT EXISTS (SELECT 1 FROM student WHERE email = ?)";
+
+        return jdbcTemplate.queryForObject(
+                sql,
+                new Object[] {email},
+                (resultSet, rowNum) -> resultSet.getBoolean(1)
+        );
+    }
+
     private RowMapper<Student> mapStudentFromDb() {
-        return (resultSet, i ) -> {
+        return (resultSet, rowNum) -> {
             String studentIDStr = resultSet.getString("student_id");
             UUID studentId= UUID.fromString(studentIDStr);
 
