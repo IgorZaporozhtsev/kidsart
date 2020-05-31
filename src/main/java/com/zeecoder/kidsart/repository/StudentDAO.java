@@ -20,12 +20,25 @@ public class StudentDAO {
     }
 
     public List<Student> selectAllStudents(){
-        String sql = "SELECT student_id, first_name, last_name, email, gender FROM student";
+        String sql = "" +
+                "SELECT " +
+                "student_id, " +
+                "first_name, " +
+                "last_name, " +
+                "email, " +
+                "gender " +
+                "FROM student";
         return jdbcTemplate.query(sql, mapStudentFromDb());
     }
 
-    public int addStudent(UUID uuid, Student student) {
-        String sql = "INSERT INTO student (student_id, first_name, last_name, email, gender) VALUES (?, ?, ?, ?, ?)";
+    public int insertStudent(UUID uuid, Student student) {
+        String sql = "" +
+                "INSERT INTO student (" +
+                "student_id, " +
+                "first_name, " +
+                "last_name, " +
+                "email, " +
+                "gender) VALUES (?, ?, ?, ?, ?::gender)";
 
         return jdbcTemplate.update(
                 sql,

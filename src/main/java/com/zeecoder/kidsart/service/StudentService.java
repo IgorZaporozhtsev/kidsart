@@ -38,6 +38,6 @@ public class StudentService {
             throw new ApiRequestException(student.getEmail() + " already exist");
         }
 
-        studentDAO.addStudent(uuid, student);
+        studentDAO.insertStudent(uuid, student);
     }
 }
