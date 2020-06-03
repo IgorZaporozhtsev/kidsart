@@ -6,3 +6,18 @@ spring:
     password: postgres1
     hikari:
       maximum-pool-size: 30
+  jpa:
+    properties:
+      hibernate:
+        formatSql: true
+        jdbc:
+          lob:
+            non-contextual-creation: true
+    databasePlatform: "org.hibernate.dialect.PostgreSQL9Dialect"
+    show-sql: false
+
+
+
+
+
+

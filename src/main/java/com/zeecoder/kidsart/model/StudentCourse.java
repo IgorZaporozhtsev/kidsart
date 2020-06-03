@@ -1,8 +1,11 @@
 package com.zeecoder.kidsart.model;
 
+import lombok.Getter;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
+@Getter
 public class StudentCourse {
     private final UUID student_id;
     private final UUID course_id;
@@ -32,41 +35,5 @@ public class StudentCourse {
         this.start_date = start_date;
         this.end_date = end_date;
         this.grade = grade;
-    }
-
-    public UUID getStudent_id() {
-        return student_id;
-    }
-
-    public UUID getCourse_id() {
-        return course_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public String getTeacherName() {
-        return teacherName;
-    }
-
-    public LocalDate getStart_date() {
-        return start_date;
-    }
-
-    public LocalDate getEnd_date() {
-        return end_date;
-    }
-
-    public int getGrade() {
-        return grade;
     }
 }
