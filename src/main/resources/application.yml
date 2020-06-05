@@ -7,6 +7,8 @@ spring:
     hikari:
       maximum-pool-size: 30
   jpa:
+    hibernate:
+        ddl-auto: update
     properties:
       hibernate:
         formatSql: true
@@ -14,7 +16,7 @@ spring:
           lob:
             non-contextual-creation: true
     databasePlatform: "org.hibernate.dialect.PostgreSQL9Dialect"
-    show-sql: false
+    show-sql: true
 
 
 

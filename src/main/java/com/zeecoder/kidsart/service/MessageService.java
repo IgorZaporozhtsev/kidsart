@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MessageService {
@@ -22,8 +21,8 @@ public class MessageService {
         return messageRepo.findAll();
     }
 
-    public Optional<Message> getMessageByID(Long id){
-        return messageRepo.findById(id);
+    public Message getMessageByOne(Message message){
+        return message;
     }
 
     public Message addMessage(Message message){
