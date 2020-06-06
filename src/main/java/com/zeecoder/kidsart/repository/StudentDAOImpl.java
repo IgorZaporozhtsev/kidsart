@@ -52,6 +52,7 @@ public class StudentDAOImpl implements StudentDAO {
         );
     }
 
+
     public List<StudentCourse> fetchAllCoursesForStudent(UUID student_id) {
         String sql = "" +
                 "SELECT " +
@@ -86,10 +87,13 @@ public class StudentDAOImpl implements StudentDAO {
                         resultSet.getString("teacher_name"),
                         resultSet.getDate("start_date").toLocalDate(),
                         resultSet.getDate("end_date").toLocalDate(),
-                        resultSet.getInt("grade")
+                        Optional.ofNullable(resultSet.getString("grade"))
+                                .map(Integer::parseInt)
+                                .orElse(null)
                 );
-
     }
+
+
     public boolean isEmailTaken(String email){
 
         String sql = "SELECT EXISTS (SELECT 1 FROM student WHERE email = ?)";

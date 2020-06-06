@@ -13,9 +13,9 @@ public class StudentCourse {
     private final String description;
     private final String department;
     private final String teacherName;
-    private final LocalDate start_date; 
+    private final LocalDate start_date;
     private final LocalDate end_date;
-    private final int grade;
+    private final Integer grade;
 
     public StudentCourse(UUID student_id,
                          UUID course_id,
@@ -25,7 +25,7 @@ public class StudentCourse {
                          String teacherName,
                          LocalDate start_date,
                          LocalDate end_date,
-                         int grade) {
+                         Integer grade) {
         this.student_id = student_id;
         this.course_id = course_id;
         this.name = name;
