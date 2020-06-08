@@ -14,7 +14,7 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonView(Views.IdName.class)//@JsonView allows to hide fields that don't market this annotation
+    @JsonView(Views.Id.class)//@JsonView allows to hide fields that don't market this annotation
     private Long id;
 
     @JsonView(Views.IdName.class)
