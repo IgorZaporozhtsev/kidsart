@@ -1,3 +1,4 @@
+/*
 package com.zeecoder.kidsart.datasource;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -16,3 +17,4 @@ public class Datasource {
                 .build();
     }
 }
+*/

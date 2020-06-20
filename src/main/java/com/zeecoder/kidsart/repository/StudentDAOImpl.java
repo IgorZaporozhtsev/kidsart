@@ -5,6 +5,7 @@ import com.zeecoder.kidsart.model.StudentCourse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     public List<Student> selectAllStudents(){
+
         String sql = "" +
                 "SELECT " +
                 "student_id, " +

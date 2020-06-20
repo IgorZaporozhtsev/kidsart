@@ -19,14 +19,3 @@ spring:
     show-sql: true
 
 
-
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            clientId: 837199908933-92pjhc4e1r3dfsgn1bri62aa0js32khp.apps.googleusercontent.com
-            clientSecret: 2GOvEKVsKjVFkHlrfCESEw9Y
-
-
-
