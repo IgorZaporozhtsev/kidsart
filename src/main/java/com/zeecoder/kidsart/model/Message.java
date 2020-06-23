@@ -1,27 +1,23 @@
 package com.zeecoder.kidsart.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonView;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
+
+@EqualsAndHashCode
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
-@Table
-@Data
+@Table(name = "message")
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonView(Views.Id.class)//@JsonView allows to hide fields that don't market this annotation
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
-    @JsonView(Views.IdName.class)
-    private String text;
-
-    @Column(updatable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonView(Views.FullMessage.class)
-    private LocalDateTime creationDate;
+    private String message;
 }
