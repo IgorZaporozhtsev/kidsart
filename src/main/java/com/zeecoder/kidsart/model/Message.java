@@ -19,5 +19,10 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
+    @Column(nullable = false)
     private String message;
+
+    @Column(nullable = false)
+    private String email;
 }
