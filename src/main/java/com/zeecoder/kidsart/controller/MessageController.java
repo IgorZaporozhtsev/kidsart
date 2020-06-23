@@ -23,14 +23,30 @@ public class MessageController {
     private String uploadPath;
 
     @GetMapping
-    public List<Message> getAllMessage(){
-        return messageService.getAllMessages();
+    public List<Message> getAll(){
+        return messageService.getAll();
     }
 
     @GetMapping("/{id}")
     public Message getOne(@PathVariable(name = "id") Long id){
-        return messageService.getMessageById(id);
+        return messageService.getById(id);
     }
+
+    @PostMapping
+    public void add(@RequestBody Message message){
+        messageService.add(message);
+    }
+
+    @PutMapping
+    public void update(@RequestBody Message message){
+        messageService.update(message);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody Message message){
+        messageService.delete(message);
+    }
+
 
     @PostMapping("/upload")
     public void addFile(@RequestParam("file") MultipartFile file){

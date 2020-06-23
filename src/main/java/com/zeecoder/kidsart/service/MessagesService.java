@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface MessagesService {
 
-    List<Message> getAllMessages();
-    Message getMessageById(Long id);
+    List<Message> getAll();
+    Message getById(Long id);
+    void add(Message message);
+    void update(Message message);
+    void delete(Message message);
 }

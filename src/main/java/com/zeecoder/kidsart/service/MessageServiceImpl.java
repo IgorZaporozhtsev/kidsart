@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MessageServiceImpl implements MessagesService{
@@ -17,12 +18,29 @@ public class MessageServiceImpl implements MessagesService{
         this.messagesRepository = messagesRepository;
     }
 
-    public List<Message> getAllMessages(){
+    @Override
+    public List<Message> getAll(){
         return messagesRepository.findAll();
     }
 
-    public Message getMessageById(Long id){
+    @Override
+    public Message getById(Long id){
         return messagesRepository.findById(id).get();
+    }
+
+    @Override
+    public void add(Message message) {
+        messagesRepository.save(message);
+    }
+
+    @Override
+    public void update(Message message) {
+        messagesRepository.save(message);
+    }
+
+    @Override
+    public void delete(Message message) {
+        messagesRepository.delete(message);
     }
 
 
