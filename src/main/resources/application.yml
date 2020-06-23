@@ -17,5 +17,16 @@ spring:
             non-contextual-creation: true
     databasePlatform: "org.hibernate.dialect.PostgreSQL9Dialect"
     show-sql: true
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215KB
+
+
+upload:
+    path: /home/zeecoder/owner/dev/homeprojects/kidsart/src/main/resources/static/img
+
 
 
